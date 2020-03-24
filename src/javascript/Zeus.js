@@ -22,8 +22,8 @@ export default class Zeus
                 this.group.add(this.zeus)
                 this.zeus.scale.set(3,3,3)
                 this.zeus.position.y = -16
-                this.zeus.position.z = 0
-                this.zeus.position.x = -20
+                this.zeus.position.z = -20
+                this.zeus.position.x = -70
                 this.zeus.rotation.y = Math.PI/2
                 this.zeus.rotation.x = Math.PI/6
 

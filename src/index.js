@@ -1,7 +1,6 @@
 import './style/main.styl'
 import * as THREE from 'three'
 import Particles from './javascript/Particles.js'
-import Duck from './javascript/Duck.js'
 import Pot from './javascript/Pot.js'
 import Zeus from './javascript/Zeus.js'
 import { TweenLite } from 'gsap/all'
@@ -72,10 +71,6 @@ scene.add(particles.group)
 
 // Objects
 
-//Duck
-const duck = new Duck()
-scene.add(duck.group)
-
 const raycaster = new THREE.Raycaster()
 
 //Pot
@@ -88,7 +83,7 @@ scene.add(zeus.group)
 
 //sand
 const sand = new THREE.Mesh(
-    new THREE.PlaneGeometry(100, 60, 1, 1),
+    new THREE.PlaneGeometry(100, 80, 1, 1),
     new THREE.MeshStandardMaterial({ 
         color: 0x0056ff,
         map: sandColorTexture,
@@ -103,15 +98,27 @@ scene.add(sand)
 const waterWalls = new THREE.Group()
 
 const backWall = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 40, 1, 80),
+    new THREE.PlaneGeometry(80, 40, 1, 80),
     new THREE.MeshStandardMaterial({
         color: 0x181e47,
         side: THREE.DoubleSide
     })
 )
-backWall.position.x = -46
+backWall.position.x = -50
 backWall.position.y = 18
 backWall.rotation.y = Math.PI/2
+
+
+const frontWall = new THREE.Mesh(
+    new THREE.PlaneGeometry(80, 40, 1, 80),
+    new THREE.MeshStandardMaterial({
+        color: 0x181e47,
+        side: THREE.DoubleSide
+    })
+)
+frontWall.position.x = 50
+frontWall.position.y = 18
+frontWall.rotation.y = Math.PI/2
 
 const leftWall = new THREE.Mesh(
     new THREE.PlaneGeometry(100, 40, 1, 80),
@@ -120,7 +127,7 @@ const leftWall = new THREE.Mesh(
         side: THREE.DoubleSide
     })
 )
-leftWall.position.z = -30
+leftWall.position.z = -40
 leftWall.position.y = 18
 
 const rightWall = new THREE.Mesh(
@@ -130,9 +137,22 @@ const rightWall = new THREE.Mesh(
         side: THREE.DoubleSide
     })
 )
-rightWall.position.z = 30
+rightWall.position.z = 40
 rightWall.position.y = 18
 
+
+const topWall = new THREE.Mesh(
+    new THREE.PlaneGeometry(100, 80, 1, 1),
+    new THREE.MeshStandardMaterial({ 
+        color: 0x0056ff,
+        side: THREE.DoubleSide
+    })
+)
+topWall.rotation.x = -Math.PI/2
+topWall.position.y =  38
+
+waterWalls.add(topWall)
+waterWalls.add(frontWall)
 waterWalls.add(rightWall)
 waterWalls.add(leftWall)
 waterWalls.add(backWall)
