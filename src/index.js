@@ -93,6 +93,15 @@ const sand = new THREE.Mesh(
 sand.rotation.x = -Math.PI/2
 sand.position.y =  -1.25
 scene.add(sand)
+
+//walls
+const waterWalls = new THREE.Group()
+
+const leftWall = new THREE.Mesh(
+
+)
+
+
 /**
  * Camera
  */
@@ -102,7 +111,7 @@ camera.position.x = -20
 scene.add(camera)
 
 //fog
-scene.fog = new THREE.FogExp2(0x181e47,0.02)
+scene.fog = new THREE.FogExp2(0x181e47,0.04)
 scene.add(scene.fog)
 /**
  * Renderer
@@ -119,6 +128,7 @@ document.body.appendChild(renderer.domElement)
 const cameraControls = new OrbitControls( camera, renderer.domElement );
 cameraControls.movementSpeed = 100;
 cameraControls.lookSpeed = 0.1;
+cameraControls.enableDamping = true;
 
 /**
  * Resize
@@ -161,7 +171,7 @@ const loop = () =>
     window.requestAnimationFrame(loop)
 
     // Camera
-
+    cameraControls.update
     // Cursor raycasting
     const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
     raycaster.setFromCamera(raycasterCursor, camera)
