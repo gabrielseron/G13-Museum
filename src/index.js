@@ -18,6 +18,10 @@ const textureLoader = new THREE.TextureLoader()
 
 const sandColorTexture = textureLoader.load(sandColorSource)
 const sandNormalTexture = textureLoader.load(sandNormalSource)
+sandColorTexture.repeat.x = 2
+sandColorTexture.repeat.y = 2
+sandColorTexture.wrapS = THREE.RepeatWrapping
+sandColorTexture.wrapT = THREE.RepeatWrapping
 
 const dracoLoader = new DRACOLoader()
 dracoLoader.setDecoderPath('/draco/')
@@ -51,7 +55,7 @@ window.addEventListener('mousemove', (_event) =>
 const scene = new THREE.Scene()
 
 // Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.3)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
 scene.add(ambientLight)
 
 // const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
@@ -79,7 +83,7 @@ scene.add(pot.group)
 
 //sand
 const sand = new THREE.Mesh(
-    new THREE.PlaneGeometry(120, 50, 1, 1),
+    new THREE.PlaneGeometry(100, 60, 1, 1),
     new THREE.MeshStandardMaterial({ 
         color: 0x0056ff,
         map: sandColorTexture,
@@ -93,10 +97,13 @@ scene.add(sand)
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
-camera.position.z = 3
+camera.position.z = -20
+camera.position.x = -20
 scene.add(camera)
 
-
+//fog
+scene.fog = new THREE.FogExp2(0x181e47,0.02)
+scene.add(scene.fog)
 /**
  * Renderer
  */
