@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import Particles from './javascript/Particles.js'
 import Duck from './javascript/Duck.js'
 import Pot from './javascript/Pot.js'
+import Zeus from './javascript/Zeus.js'
 import { TweenLite } from 'gsap/all'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -81,6 +82,10 @@ const raycaster = new THREE.Raycaster()
 const pot = new Pot()
 scene.add(pot.group)
 
+//Zeus
+const zeus = new Zeus()
+scene.add(zeus.group)
+
 //sand
 const sand = new THREE.Mesh(
     new THREE.PlaneGeometry(100, 60, 1, 1),
@@ -141,10 +146,11 @@ const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 
 camera.position.z = -20
 camera.position.x = -20
 
+
 scene.add(camera)
 
 //fog
-scene.fog = new THREE.FogExp2(0x181e47,0.04)
+scene.fog = new THREE.FogExp2(0x181e47,0.06)
 scene.add(scene.fog)
 /**
  * Renderer
@@ -162,6 +168,8 @@ const cameraControls = new OrbitControls( camera, renderer.domElement );
 cameraControls.movementSpeed = 100;
 cameraControls.lookSpeed = 0.001;
 cameraControls.enableDamping = true;
+cameraControls.minDistance = 10
+cameraControls.maxDistance = 10
 
 /**
  * Resize
