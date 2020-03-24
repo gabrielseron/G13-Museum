@@ -97,9 +97,41 @@ scene.add(sand)
 //walls
 const waterWalls = new THREE.Group()
 
-const leftWall = new THREE.Mesh(
-
+const backWall = new THREE.Mesh(
+    new THREE.PlaneGeometry(60, 40, 1, 80),
+    new THREE.MeshStandardMaterial({
+        color: 0x181e47,
+        side: THREE.DoubleSide
+    })
 )
+backWall.position.x = -46
+backWall.position.y = 18
+backWall.rotation.y = Math.PI/2
+
+const leftWall = new THREE.Mesh(
+    new THREE.PlaneGeometry(100, 40, 1, 80),
+    new THREE.MeshStandardMaterial({
+        color: 0x181e47,
+        side: THREE.DoubleSide
+    })
+)
+leftWall.position.z = -30
+leftWall.position.y = 18
+
+const rightWall = new THREE.Mesh(
+    new THREE.PlaneGeometry(100, 40, 1, 80),
+    new THREE.MeshStandardMaterial({
+        color: 0x181e47,
+        side: THREE.DoubleSide
+    })
+)
+rightWall.position.z = 30
+rightWall.position.y = 18
+
+waterWalls.add(rightWall)
+waterWalls.add(leftWall)
+waterWalls.add(backWall)
+scene.add(waterWalls)
 
 
 /**
@@ -108,6 +140,7 @@ const leftWall = new THREE.Mesh(
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.z = -20
 camera.position.x = -20
+
 scene.add(camera)
 
 //fog
@@ -127,7 +160,7 @@ document.body.appendChild(renderer.domElement)
  */
 const cameraControls = new OrbitControls( camera, renderer.domElement );
 cameraControls.movementSpeed = 100;
-cameraControls.lookSpeed = 0.1;
+cameraControls.lookSpeed = 0.001;
 cameraControls.enableDamping = true;
 
 /**
@@ -171,7 +204,7 @@ const loop = () =>
     window.requestAnimationFrame(loop)
 
     // Camera
-    cameraControls.update
+    cameraControls.update()
     // Cursor raycasting
     const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
     raycaster.setFromCamera(raycasterCursor, camera)
