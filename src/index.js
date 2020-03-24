@@ -2,9 +2,17 @@ import './style/main.styl'
 import * as THREE from 'three'
 import Particles from './javascript/Particles.js'
 import Duck from './javascript/Duck.js'
+import Pot from './javascript/Pot.js'
 import { TweenLite } from 'gsap/all'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
+const dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath('/draco/')
+
+const gltfLoader = new GLTFLoader()
+gltfLoader.setDRACOLoader(dracoLoader)
 
 /**
  * Sizes
@@ -48,12 +56,15 @@ scene.add(particles.group)
 
 // Objects
 
-
 //Duck
 const duck = new Duck()
 scene.add(duck.group)
 
 const raycaster = new THREE.Raycaster()
+
+//Pot
+const pot = new Pot()
+scene.add(pot.group)
 
 /**
  * Camera
