@@ -7,6 +7,17 @@ import { TweenLite } from 'gsap/all'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
+import sandColorSource from '../static/models/sand/sand_color.jpg'
+import sandNormalSource from '../static/models/sand/sand_normal.jpg'
+
+
+/**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader()
+
+const sandColorTexture = textureLoader.load(sandColorSource)
+const sandNormalTexture = textureLoader.load(sandNormalSource)
 
 const dracoLoader = new DRACOLoader()
 dracoLoader.setDecoderPath('/draco/')
@@ -40,14 +51,14 @@ window.addEventListener('mousemove', (_event) =>
 const scene = new THREE.Scene()
 
 // Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.3)
 scene.add(ambientLight)
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
-directionalLight.position.x = 5
-directionalLight.position.y = 5
-directionalLight.position.z = 5
-scene.add(directionalLight)
+// const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+// directionalLight.position.x = 5
+// directionalLight.position.y = 5
+// directionalLight.position.z = 5
+// scene.add(directionalLight)
 
 //Cubes
 const particles = new Particles()
@@ -66,6 +77,18 @@ const raycaster = new THREE.Raycaster()
 const pot = new Pot()
 scene.add(pot.group)
 
+//sand
+const sand = new THREE.Mesh(
+    new THREE.PlaneGeometry(120, 50, 1, 1),
+    new THREE.MeshStandardMaterial({ 
+        color: 0x0056ff,
+        map: sandColorTexture,
+        normalMap: sandNormalTexture 
+    })
+)
+sand.rotation.x = -Math.PI/2
+sand.position.y =  -1.25
+scene.add(sand)
 /**
  * Camera
  */
