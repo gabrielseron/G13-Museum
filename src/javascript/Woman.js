@@ -20,7 +20,11 @@ export default class Woman
             {
                 this.woman = _gltf.scene
                 this.group.add(this.woman)
-                this.woman.position.z = 10
+                this.woman.position.z = 20
+                this.woman.position.y = -1
+                this.woman.rotation.z = -Math.PI/12
+                this.woman.rotation.y = -Math.PI
+
             }
         )
     }

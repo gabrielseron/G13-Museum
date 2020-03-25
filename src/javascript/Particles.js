@@ -7,7 +7,9 @@ class Particles
         this.group = new THREE.Group()
 
         const particlesGeometry = new THREE.SphereGeometry(0.01, 0.01, 0.01)
-        const particlesMaterial = new THREE.PointsMaterial()
+        const particlesMaterial = new THREE.PointsMaterial({
+            color: 0x203861
+        })
 
         for(let i = 0; i < 10000; i++)
         {
@@ -18,16 +20,16 @@ class Particles
 
             this.group.add(particlesMesh)
         }
-        
+
     }
     updateParticles(){
             this.group.children.forEach(bubble => {
-            const particlesPosition = Date.now() * 0.0000001
-            bubble.position.x += Math.cos(particlesPosition) * 5
-            bubble.position.z += Math.random(Math.sin(particlesPosition) * 0.5)
+            const particlesPosition = Date.now() * 0.00001
+            // bubble.position.x += Math.cos(particlesPosition) * 5
+            // bubble.position.z += Math.random(Math.sin(particlesPosition) * 0.5)
+            this.group.rotation.y = particlesPosition
         })
     }
-    
 }
 
 

@@ -20,7 +20,6 @@ export default class Castle
             {
                 this.castle = _gltf.scene
                 this.group.add(this.castle)
-                this.castle.scale.set(4,4,4)
                 this.castle.position.y = -20
             }
         )

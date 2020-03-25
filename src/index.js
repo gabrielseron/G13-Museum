@@ -4,9 +4,10 @@ import Particles from './javascript/Particles.js'
 import Pot from './javascript/Pot.js'
 import Zeus from './javascript/Zeus.js'
 import Woman from './javascript/Woman.js'
+import Hermaphro from './javascript/Hermaphro.js'
 // import Castle from './javascript/Castle.js'
 import { TweenLite } from 'gsap/all'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import sandColorSource from '../static/models/sand/sand_color.jpg'
@@ -17,13 +18,18 @@ import sandNormalSource from '../static/models/sand/sand_normal.jpg'
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
-
 const sandColorTexture = textureLoader.load(sandColorSource)
-const sandNormalTexture = textureLoader.load(sandNormalSource)
 sandColorTexture.repeat.x = 2
 sandColorTexture.repeat.y = 2
 sandColorTexture.wrapS = THREE.RepeatWrapping
 sandColorTexture.wrapT = THREE.RepeatWrapping
+
+const sandNormalTexture = textureLoader.load(sandNormalSource)
+sandNormalTexture.repeat.x = 2
+sandNormalTexture.repeat.y = 2
+sandNormalTexture.wrapS = THREE.RepeatWrapping
+sandNormalTexture.wrapT = THREE.RepeatWrapping
+
 
 const dracoLoader = new DRACOLoader()
 dracoLoader.setDecoderPath('/draco/')
@@ -57,8 +63,14 @@ window.addEventListener('mousemove', (_event) =>
 const scene = new THREE.Scene()
 
 // Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
-scene.add(ambientLight)
+// const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
+// scene.add(ambientLight)
+
+
+const pointLight = new THREE.PointLight(0xffffff, 0.6)
+pointLight.position.x = 5
+pointLight.position.y = 40
+scene.add(pointLight)
 
 // const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
 // directionalLight.position.x = 5
@@ -86,6 +98,10 @@ scene.add(zeus.group)
 const woman = new Woman()
 scene.add(woman.group)
 
+//Hermaphro
+const hermaphro = new Hermaphro()
+scene.add(hermaphro.group)
+
 // //Castle
 // const castle = new Castle()
 // scene.add(castle.group)
@@ -95,7 +111,7 @@ scene.add(woman.group)
 const sand = new THREE.Mesh(
     new THREE.PlaneGeometry(100, 80, 1, 1),
     new THREE.MeshStandardMaterial({ 
-        color: 0x0056ff,
+        color: 0x2e50b8,
         map: sandColorTexture,
         normalMap: sandNormalTexture 
     })
@@ -180,7 +196,7 @@ camera.position.x = -20
 scene.add(camera)
 
 //fog
-scene.fog = new THREE.FogExp2(0x181e47,0.02)
+scene.fog = new THREE.FogExp2(0x0d1130,0.06)
 scene.add(scene.fog)
 /**
  * Renderer
@@ -194,8 +210,8 @@ document.body.appendChild(renderer.domElement)
 /**
  * Camera Controls
  */
-const cameraControls = new OrbitControls( camera, renderer.domElement )
-
+const cameraControls = new FirstPersonControls( camera, renderer.domElement )
+cameraControls.enableDamping = true
 cameraControls.lookSpeed = 0.01
 
 /**

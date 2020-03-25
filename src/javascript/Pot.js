@@ -26,6 +26,9 @@ export default class Pot
                 this.pot.position.y = -18.5
                 this.pot.rotation.x = -1
                 this.pot.rotation.y = Math.PI/8
+                this.pot.emissive = 0xffffff
+                this.pot.emissiveIntesivity = 4
+
             }
         )
     }
