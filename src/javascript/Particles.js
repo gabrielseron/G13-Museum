@@ -18,7 +18,7 @@ class Particles
 
             this.group.add(particlesMesh)
         }
-    }
+    } 
 }
 
 export default Particles
