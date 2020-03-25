@@ -195,8 +195,9 @@ document.body.appendChild(renderer.domElement)
 /**
  * Camera Controls
  */
-const cameraControls = new FirstPersonControls( camera, renderer.domElement );
+const cameraControls = new FirstPersonControls( camera, renderer.domElement )
 
+cameraControls.lookSpeed = 0.01
 
 /**
  * Resize
