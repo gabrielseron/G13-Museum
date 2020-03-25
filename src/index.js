@@ -12,8 +12,60 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import sandColorSource from '../static/models/sand/sand_color.jpg'
 import sandNormalSource from '../static/models/sand/sand_normal.jpg'
+import imageSource from './images/howtoplay.png'
 
 
+/**
+ * Start Screen
+ */
+const firstElements = document.querySelectorAll('.firstElements')
+const secondElements = document.querySelectorAll('.secondElements')
+
+const progressBar = document.querySelector('.progressBarProgression')
+let progressBarValue  = 100
+
+progressBar.style.width = `${progressBarValue}%`
+
+if (progressBarValue == 100) 
+{
+    for (let i = 0; i < firstElements.length; i++) 
+    {
+        const element = firstElements[i];
+        element.classList.add('invisible')
+    }
+    for (let j = 0; j < secondElements.length; j++) 
+    {
+        const element2 = secondElements[j];
+        element2.classList.remove('invisible')
+    }
+}
+
+const startButton = document.querySelector('.startButton')
+const startDiv = document.querySelector('.container')
+const rendererPlaceHolder = document.querySelector('.rendererPlaceHolder')
+startButton.addEventListener('click',  () => 
+{
+    startDiv.classList.add('invisible')
+    rendererPlaceHolder.classList.remove('invisible')
+})
+
+console.log(imageSource);
+
+const controlsImage = document.querySelector('.controls')
+const $image = new Image()
+$image.src = imageSource
+controlsImage.appendChild($image)
+
+
+document.addEventListener('keydown', (e) => 
+{
+    if (e.code == 'KeyW') 
+    {
+        console.log('hei w')
+        controlsImage.classList.toggle('invisible')
+    }
+ })
+ 
 /**
  * Textures
  */
@@ -205,7 +257,7 @@ const renderer = new THREE.WebGLRenderer({ alpha: true })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setClearAlpha(0)
-document.body.appendChild(renderer.domElement)
+rendererPlaceHolder.appendChild(renderer.domElement)
 
 /**
  * Camera Controls
