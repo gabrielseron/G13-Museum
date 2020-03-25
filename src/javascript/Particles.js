@@ -13,7 +13,7 @@ class Particles
         {
             const particlesMesh = new THREE.Mesh(particlesGeometry, particlesMaterial)
             particlesMesh.position.x = Math.random() * 120 - 60
-            particlesMesh.position.y = Math.random() * 10
+            particlesMesh.position.y = Math.random() * 10 + 2
             particlesMesh.position.z = Math.random() * 120 - 60
 
             this.group.add(particlesMesh)

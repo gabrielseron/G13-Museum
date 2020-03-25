@@ -6,7 +6,7 @@ import Zeus from './javascript/Zeus.js'
 import Woman from './javascript/Woman.js'
 // import Castle from './javascript/Castle.js'
 import { TweenLite } from 'gsap/all'
-import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import sandColorSource from '../static/models/sand/sand_color.jpg'
@@ -195,7 +195,7 @@ document.body.appendChild(renderer.domElement)
 /**
  * Camera Controls
  */
-const cameraControls = new FirstPersonControls( camera, renderer.domElement )
+const cameraControls = new OrbitControls( camera, renderer.domElement )
 
 cameraControls.lookSpeed = 0.01
 
