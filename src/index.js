@@ -68,7 +68,6 @@ scene.add(ambientLight)
 
 //Cubes
 const particles = new Particles()
-particles.group.position.x = 2
 scene.add(particles.group)
 
 // Objects
@@ -256,14 +255,13 @@ const loop = () =>
     // }
     // console.log(camera.position)
     // Update particles
-    // const particlesAngle = Date.now() * 0.0003
-    // Particles.Particles.position.x = Math.cos(particlesAngle) * 5
-    // Particles.position.z = Math.sin(particlesAngle) * 5
-    // Particles.this.group.position.y = Math.sin(Date.now() * 0.001)
 
+    // updateParticles()
+    
 
     // Render
     renderer.render(scene, camera)
+    
 
 }
 

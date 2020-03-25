@@ -21,8 +21,14 @@ class Particles
     }
 }
 
-export default Particles
+function updateParticles(){
+    this.Particles.forEach(bubbles => {
+        const particlesPosition = Date.now() * 0.0003 + Math.PI * 2 / 3
+        bubbles.position.x = Math.cos(particlesPosition) * 5
+        bubbles.position.z = Math.sin(particlesPosition) * 5
+        bubbles.position.y = Math.sin(Date.now() * 0.0012)
+    })
+}
 
-            // particlesMesh.position.x = Math.random() * 120 - 60
-            // particlesMesh.position.y = Math.random() * 10
-            // particlesMesh.position.z = Math.random() * 120 - 60
+console.log(updateParticles)
+export default Particles
