@@ -66,7 +66,7 @@ scene.add(ambientLight)
 // directionalLight.position.z = 5
 // scene.add(directionalLight)
 
-//Cubes
+//Particles
 const particles = new Particles()
 scene.add(particles.group)
 
@@ -256,7 +256,7 @@ const loop = () =>
     // console.log(camera.position)
     // Update particles
 
-    // updateParticles()
+    particles.updateParticles()
     
 
     // Render

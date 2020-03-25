@@ -18,17 +18,17 @@ class Particles
 
             this.group.add(particlesMesh)
         }
+        
     }
+    updateParticles(){
+            this.group.children.forEach(bubble => {
+            const particlesPosition = Date.now() * 0.0000001
+            bubble.position.x += Math.cos(particlesPosition) * 5
+            bubble.position.z += Math.random(Math.sin(particlesPosition) * 0.5)
+        })
+    }
+    
 }
 
-function updateParticles(){
-    this.Particles.forEach(bubbles => {
-        const particlesPosition = Date.now() * 0.0003 + Math.PI * 2 / 3
-        bubbles.position.x = Math.cos(particlesPosition) * 5
-        bubbles.position.z = Math.sin(particlesPosition) * 5
-        bubbles.position.y = Math.sin(Date.now() * 0.0012)
-    })
-}
 
-console.log(updateParticles)
 export default Particles
