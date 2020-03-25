@@ -3,8 +3,10 @@ import * as THREE from 'three'
 import Particles from './javascript/Particles.js'
 import Pot from './javascript/Pot.js'
 import Zeus from './javascript/Zeus.js'
+import Woman from './javascript/Woman.js'
+// import Castle from './javascript/Castle.js'
 import { TweenLite } from 'gsap/all'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import sandColorSource from '../static/models/sand/sand_color.jpg'
@@ -55,7 +57,7 @@ window.addEventListener('mousemove', (_event) =>
 const scene = new THREE.Scene()
 
 // Lights
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
 scene.add(ambientLight)
 
 // const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
@@ -80,6 +82,15 @@ scene.add(pot.group)
 //Zeus
 const zeus = new Zeus()
 scene.add(zeus.group)
+
+//Woman
+const woman = new Woman()
+scene.add(woman.group)
+
+// //Castle
+// const castle = new Castle()
+// scene.add(castle.group)
+
 
 //sand
 const sand = new THREE.Mesh(
@@ -170,7 +181,7 @@ camera.position.x = -20
 scene.add(camera)
 
 //fog
-scene.fog = new THREE.FogExp2(0x181e47,0.06)
+scene.fog = new THREE.FogExp2(0x181e47,0.02)
 scene.add(scene.fog)
 /**
  * Renderer
@@ -184,12 +195,8 @@ document.body.appendChild(renderer.domElement)
 /**
  * Camera Controls
  */
-const cameraControls = new OrbitControls( camera, renderer.domElement );
-cameraControls.movementSpeed = 100;
-cameraControls.lookSpeed = 0.001;
-cameraControls.enableDamping = true;
-cameraControls.minDistance = 10
-cameraControls.maxDistance = 10
+const cameraControls = new FirstPersonControls( camera, renderer.domElement );
+
 
 /**
  * Resize
@@ -232,7 +239,7 @@ const loop = () =>
     window.requestAnimationFrame(loop)
 
     // Camera
-    cameraControls.update()
+    cameraControls.update(0.11)
     // Cursor raycasting
     const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
     raycaster.setFromCamera(raycasterCursor, camera)
@@ -256,6 +263,7 @@ const loop = () =>
 
     // Render
     renderer.render(scene, camera)
+
 }
 
 loop()

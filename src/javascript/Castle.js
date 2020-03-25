@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
-export default class Zeus
+export default class Castle
 {
     constructor()
     {
@@ -15,18 +15,13 @@ export default class Zeus
         gltfLoader.setDRACOLoader(dracoLoader)
 
         gltfLoader.load(
-            '/models/artPoints/Zeus.glb',
+            '/models/artPoints/Castle.glb',
             (_gltf) =>
             {
-                this.zeus = _gltf.scene
-                this.group.add(this.zeus)
-                this.zeus.scale.set(3,3,3)
-                this.zeus.position.y = -16
-                this.zeus.position.z = -20
-                this.zeus.position.x = -70
-
-                this.zeus.rotation.x = Math.PI/6
-
+                this.castle = _gltf.scene
+                this.group.add(this.castle)
+                this.castle.scale.set(4,4,4)
+                this.castle.position.y = -20
             }
         )
     }

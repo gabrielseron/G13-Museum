@@ -21,8 +21,8 @@ export default class Pot
                 this.pot = _gltf.scene
                 this.group.add(this.pot)
                 this.pot.scale.set(2,2,2)
-                this.pot.position.x = -28
-                this.pot.position.z = 2
+                this.pot.position.x = -38
+                this.pot.position.z = 4
                 this.pot.position.y = -18.5
                 this.pot.rotation.x = -1
                 this.pot.rotation.y = Math.PI/8
