@@ -24,7 +24,6 @@ export default class Woman
                 this.woman.position.y = -1
                 this.woman.rotation.z = -Math.PI/12
                 this.woman.rotation.y = -Math.PI
-
             }
         )
     }

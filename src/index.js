@@ -20,6 +20,7 @@ import imageSource from './images/howtoplay.png'
  */
 const firstElements = document.querySelectorAll('.firstElements')
 const secondElements = document.querySelectorAll('.secondElements')
+const $positionedContainer = document.querySelector('.positionedContainer')
 
 const progressBar = document.querySelector('.progressBarProgression')
 let progressBarValue  = 100
@@ -45,11 +46,10 @@ const startDiv = document.querySelector('.container')
 const rendererPlaceHolder = document.querySelector('.rendererPlaceHolder')
 startButton.addEventListener('click',  () => 
 {
-    startDiv.classList.add('invisible')
+    $positionedContainer.classList.add('invisible')
     rendererPlaceHolder.classList.remove('invisible')
 })
 
-console.log(imageSource);
 
 const controlsImage = document.querySelector('.controls')
 const $image = new Image()
@@ -59,9 +59,8 @@ controlsImage.appendChild($image)
 
 document.addEventListener('keydown', (e) => 
 {
-    if (e.code == 'KeyW') 
+    if (e.code == 'KeyI') 
     {
-        console.log('hei w')
         controlsImage.classList.toggle('invisible')
     }
  })
@@ -249,7 +248,6 @@ scene.add(camera)
 
 //fog
 scene.fog = new THREE.FogExp2(0x0d1130,0.06)
-scene.add(scene.fog)
 /**
  * Renderer
  */
@@ -257,7 +255,7 @@ const renderer = new THREE.WebGLRenderer({ alpha: true })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 renderer.setClearAlpha(0)
-rendererPlaceHolder.appendChild(renderer.domElement)
+document.body.appendChild(renderer.domElement)
 
 /**
  * Camera Controls
@@ -309,8 +307,8 @@ const loop = () =>
     // Camera
     cameraControls.update(0.11)
     // Cursor raycasting
-    const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
-    raycaster.setFromCamera(raycasterCursor, camera)
+    // const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
+    // raycaster.setFromCamera(raycasterCursor, camera)
 
     // const intersects = raycaster.intersectObject(duck.group, true)
     // if(intersects.length)
@@ -329,8 +327,6 @@ const loop = () =>
 
     // Render
     renderer.render(scene, camera)
-    
-
 }
 
 loop()
