@@ -329,36 +329,43 @@ const loop = () =>
     const intersectsPot = raycaster.intersectObject(pot.group, true)
     const intersectsWoman = raycaster.intersectObject(woman.group, true)
     const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
+    const descriptionBlock = document.querySelector('.descriptionBlock')
 
     if(intersectsZeus.length || intersectsWoman.length || intersectsPot.length || intersectsHermaphro.length ){
         if(intersectsZeus.length)
         {
-            activeArt = 0
+            descriptionBlock.innerHTML = `C’est une statue de Zeus réalisée dans le sanctuaire d'Olympie par le sculpteur athénien Phidias, vers 436 av. J.-C.`
         }
         
         if(intersectsPot.length)
         {
-            activeArt = 1
+            descriptionBlock.innerHTML = `Ce vase aurait été offert par Athéna au peuple des Pléiades en 637 av. J.C`
         }
 
         if(intersectsWoman.length)
         {
-            activeArt = 2
+            descriptionBlock.innerHTML = `Ce vase fût pendant longtemps un symbole de fertilité pour quelconque peuple le possédant.`
         }
 
         if(intersectsHermaphro.length)
         {
-            activeArt = 3
+            descriptionBlock.innerHTML =`L'Hermaphrodite Borghèse est une statue antique représentant Hermaphrodite endormi sur un matelas. Cette œuvre romaine est plus ou moins une copie d'après un original grec du IIème siècle av. J.-C.`
         }
         hoverArt = true
     }
-    else{
+    else
+    {
         hoverArt = false
-        activeArt = 4
+    }
+    if (hoverArt == true) 
+    {
+        descriptionBlock.classList.remove('invisible')
+    }
+    else
+    {
+        descriptionBlock.classList.add('invisible')
     }
     
-    console.log(activeArt)
-
     particles.updateParticles()
     
 
