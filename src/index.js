@@ -330,7 +330,7 @@ const loop = () =>
     // const intersectsWoman = raycaster.intersectObject(woman.group, true)
     // const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
 
-    const intersect = raycaster.intersectObjects([zeus.zeus, pot.pot, woman.woman, hermaphro.hermaphro], true)
+    const intersect = raycaster.intersectObjects([zeus.group, pot.group, woman.group, hermaphro.group], true)
 
 
     const descriptionBlock = document.querySelector('.descriptionBlock')
@@ -338,7 +338,7 @@ const loop = () =>
 
 
     if( intersect.length > 0 ){
-    console.log(zeus.group)
+    // console.log(zeus.group)
         switch (intersect[0].object.name){
         case 'zeusObject':
             descriptionBlock.innerHTML = `C’est une statue de Zeus réalisée dans le sanctuaire d'Olympie par le sculpteur athénien Phidias, vers 436 av. J.-C.`
