@@ -107,10 +107,34 @@ h1.secondElements
 .invisible
     display none
 
+
 .controlsTextContainer
     position absolute
     top 20px
     right 20px
     z-index 50
     color white
-    
+
+
+@keyframes myAnimation{
+  0%{
+    opacity: 1;
+  }
+  70%{
+    opacity: 1;
+  }
+  80%{
+    opacity: 0.66;
+  }
+  90%{
+    opacity: 0.33;
+  }
+  100%{
+    display: none;
+    opacity: 0;
+  }
+}
+.controlsTexts
+    animation-name: myAnimation;
+    animation-duration: 10000ms;
+    animation-fill-mode: forwards;
