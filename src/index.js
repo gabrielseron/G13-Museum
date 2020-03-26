@@ -5,7 +5,6 @@ import Pot from './javascript/Pot.js'
 import Zeus from './javascript/Zeus.js'
 import Woman from './javascript/Woman.js'
 import Hermaphro from './javascript/Hermaphro.js'
-// import Castle from './javascript/Castle.js'
 import { TweenLite } from 'gsap/all'
 import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -25,57 +24,6 @@ audioPlaceHolder.appendChild($audio)
 
 
 
-/**
- * Start Screen
- */
-const firstElements = document.querySelectorAll('.firstElements')
-const secondElements = document.querySelectorAll('.secondElements')
-const $positionedContainer = document.querySelector('.positionedContainer')
-
-const progressBar = document.querySelector('.progressBarProgression')
-let progressBarValue  = 100
-
-progressBar.style.width = `${progressBarValue}%`
-
-if (progressBarValue == 100) 
-{
-    for (let i = 0; i < firstElements.length; i++) 
-    {
-        const element = firstElements[i];
-        element.classList.add('invisible')
-    }
-    for (let j = 0; j < secondElements.length; j++) 
-    {
-        const element2 = secondElements[j];
-        element2.classList.remove('invisible')
-    }
-}
-
-const startButton = document.querySelector('.startButton')
-const startDiv = document.querySelector('.container')
-const rendererPlaceHolder = document.querySelector('.rendererPlaceHolder')
-startButton.addEventListener('click',  () => 
-{
-    $positionedContainer.classList.add('invisible')
-    rendererPlaceHolder.classList.remove('invisible')
-    $audio.play()
-})
-
-
-const controlsImage = document.querySelector('.controls')
-const $image = new Image()
-$image.src = imageSource
-controlsImage.appendChild($image)
-
-
-document.addEventListener('keydown', (e) => 
-{
-    if (e.code == 'KeyI') 
-    {
-        controlsImage.classList.toggle('invisible')
-    }
- })
- 
 /**
  * Textures
  */
@@ -307,12 +255,94 @@ window.addEventListener('resize', () =>
 //     }
 // })
 
+
+/**
+ * Start Screen
+ */
+const firstElements = document.querySelectorAll('.firstElements')
+const secondElements = document.querySelectorAll('.secondElements')
+const $positionedContainer = document.querySelector('.positionedContainer')
+
+const progressBar = document.querySelector('.progressBarProgression')
+let progressBarValue  = 0
+progressBar.style.width = `${progressBarValue}%`
+
+console.log(progressBarValue);
+
+zeus.group.addEventListener('load', () => 
+{
+    progressBarValue += 25
+    console.log(progressBarValue);
+})
+
+pot.group.addEventListener('load', () => 
+{
+    progressBarValue += 25
+    console.log(progressBarValue);
+})
+
+woman.group.addEventListener('load', () => 
+{
+    progressBarValue += 25
+    console.log(progressBarValue);
+})
+
+hermaphro.group.addEventListener('load', () => 
+{
+    progressBarValue += 25
+    console.log(progressBarValue);
+    
+})
+
+
+
+if (progressBarValue == 100) 
+{
+    for (let i = 0; i < firstElements.length; i++) 
+    {
+        const element = firstElements[i];
+        element.classList.add('invisible')
+    }
+    for (let j = 0; j < secondElements.length; j++) 
+    {
+        const element2 = secondElements[j];
+        element2.classList.remove('invisible')
+    }
+}
+
+
+
+const startButton = document.querySelector('.startButton')
+const startDiv = document.querySelector('.container')
+const rendererPlaceHolder = document.querySelector('.rendererPlaceHolder')
+startButton.addEventListener('click',  () => 
+{
+    $positionedContainer.classList.add('invisible')
+    rendererPlaceHolder.classList.remove('invisible')
+    $audio.play()
+})
+
+
+const controlsImage = document.querySelector('.controls')
+const $image = new Image()
+$image.src = imageSource
+controlsImage.appendChild($image)
+
+
+document.addEventListener('keydown', (e) => 
+{
+    if (e.code == 'KeyI') 
+    {
+        controlsImage.classList.toggle('invisible')
+    }
+ })
+ 
+
+
 /**
  * Loop
  */
 let hoverArt = false
-
-let activeArt = 0
 
 const loop = () =>
 {
