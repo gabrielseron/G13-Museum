@@ -15,6 +15,11 @@ import sandNormalSource from '../static/models/sand/sand_normal.jpg'
 import imageSource from './images/howtoplay.png'
 
 
+const seaSound = document.querySelector('#seaSound')
+
+
+
+
 /**
  * Start Screen
  */
@@ -48,6 +53,7 @@ startButton.addEventListener('click',  () =>
 {
     $positionedContainer.classList.add('invisible')
     rendererPlaceHolder.classList.remove('invisible')
+    seaSound.play()
 })
 
 
