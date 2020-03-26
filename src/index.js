@@ -21,6 +21,7 @@ const audioPlaceHolder = document.querySelector('.audioPlaceHolder')
 const $audio = new Audio()
 $audio.src = soundSource
 audioPlaceHolder.appendChild($audio)
+$audio.loop = true
 
 
 
