@@ -369,40 +369,40 @@ const loop = () =>
     particles.updateParticles()
     
 
-    if (camera.position.y > 30)
-    {
-        camera.position.y = 30
-    }
-
-    if(camera.position.y < 0)
-    {
-        camera.position = 0
-    }
-
-    if (camera.position.x > 35)
-    {
-        camera.position.x = 35
-    }
-
-    if (camera.position.x < -20)
-    {
-        camera.position.x = -20
-    }
-
-    if (camera.position.z > 30)
-    {
-        camera.position.z = 30
-    }
-    
-    if (camera.position.z < -30)
-    {
-        camera.position.z = -30
-    }
-    
-
     // Render
     renderer.render(scene, camera)
 
+
+    if (camera.position.y < 0)
+    {
+        camera.position.y = 0
+    }
+
+    if (camera.position.y > 20)
+    {
+        camera.position.y = 20
+    }
+
+
+    if(camera.position.x > 40)
+    {
+        camera.position.x = 40
+    }
+
+    if(camera.position.x < -40)
+    {
+        camera.position.x = -40
+    }
+
+    if(camera.position.z > 30)
+    {
+        camera.position.z = 30
+    }
+
+    if(camera.position.z < -35)
+    {
+        camera.position.z = -35
+    }
 }
 
 loop()
