@@ -310,28 +310,54 @@ window.addEventListener('resize', () =>
 /**
  * Loop
  */
-//let hoverDuck = false
+let hoverArt = false
+
+let activeArt = 0
+
 const loop = () =>
 {
     window.requestAnimationFrame(loop)
 
     // Camera
     cameraControls.update(0.11)
-    // Cursor raycasting
-    // const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
-    // raycaster.setFromCamera(raycasterCursor, camera)
 
-    // const intersects = raycaster.intersectObject(duck.group, true)
-    // if(intersects.length)
-    // {
-    //     hoverDuck = true
-    // }
-    // else
-    // {
-    //     hoverDuck = false
-    // }
-    // console.log(camera.position)
-    // Update particles
+    // Cursor raycasting
+    const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
+    raycaster.setFromCamera(raycasterCursor, camera)
+
+    const intersectsZeus = raycaster.intersectObject(zeus.group, true)
+    const intersectsPot = raycaster.intersectObject(pot.group, true)
+    const intersectsWoman = raycaster.intersectObject(woman.group, true)
+    const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
+
+    if(intersectsZeus.length || intersectsWoman.length || intersectsPot.length || intersectsHermaphro.length ){
+        if(intersectsZeus.length)
+        {
+            activeArt = 0
+        }
+        
+        if(intersectsPot.length)
+        {
+            activeArt = 1
+        }
+
+        if(intersectsWoman.length)
+        {
+            activeArt = 2
+        }
+
+        if(intersectsHermaphro.length)
+        {
+            activeArt = 3
+        }
+        hoverArt = true
+    }
+    else{
+        hoverArt = false
+        activeArt = 4
+    }
+    
+    console.log(activeArt)
 
     particles.updateParticles()
     
