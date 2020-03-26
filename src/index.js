@@ -335,22 +335,22 @@ const loop = () =>
     if(intersectsZeus.length || intersectsWoman.length || intersectsPot.length || intersectsHermaphro.length ){
         if(intersectsZeus.length)
         {
-            descriptionBlock.innerHTML = `C’est une statue de Zeus réalisée dans le sanctuaire d'Olympie par le sculpteur athénien Phidias, vers 436 av. J.-C.`
+            descriptionBlock.innerHTML = `This is a statue of Zeus made in the sanctuary of Olympia by the Athenian sculptor Phidias, around 436 BC. AD`
         }
         
         if(intersectsPot.length)
         {
-            descriptionBlock.innerHTML = `Ce vase aurait été offert par Athéna au peuple des Pléiades en 637 av. J.C`
+            descriptionBlock.innerHTML = `This vase would have been offered by Athena to the people of the Pleiades in 637 BC. J.C`
         }
 
         if(intersectsWoman.length)
         {
-            descriptionBlock.innerHTML = `Ce vase fût pendant longtemps un symbole de fertilité pour quelconque peuple le possédant.`
+            descriptionBlock.innerHTML = `This vase was for a long time a symbol of fertility for any people having it.`
         }
 
         if(intersectsHermaphro.length)
         {
-            descriptionBlock.innerHTML =`L'Hermaphrodite Borghèse est une statue antique représentant Hermaphrodite endormi sur un matelas. Cette œuvre romaine est plus ou moins une copie d'après un original grec du IIème siècle av. J.-C.`
+            descriptionBlock.innerHTML =`The Borghese Hermaphrodite is an ancient statue of a sleeping Hermaphrodite on a mattress. This Roman work is more or less a copy of a Greek original from the 2nd century BC. AD`
         }
         hoverArt = true
     }
