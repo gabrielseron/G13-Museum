@@ -13,9 +13,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import sandColorSource from '../static/models/sand/sand_color.jpg'
 import sandNormalSource from '../static/models/sand/sand_normal.jpg'
 import imageSource from './images/howtoplay.png'
-
-
-const seaSound = document.querySelector('#seaSound')
+import seaSound from '../static/audios/ambianceOfTheSea.mp3'
 
 
 
