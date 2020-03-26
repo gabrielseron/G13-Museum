@@ -152,7 +152,6 @@ const raycaster = new THREE.Raycaster()
 const pot = new Pot()
 scene.add(pot.group)
 
-
 //Zeus
 const zeus = new Zeus()
 scene.add(zeus.group)
@@ -313,6 +312,7 @@ window.addEventListener('resize', () =>
  */
 let hoverArt = false
 
+let activeArt = 0
 
 const loop = () =>
 {
@@ -325,49 +325,38 @@ const loop = () =>
     const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
     raycaster.setFromCamera(raycasterCursor, camera)
 
-    // const intersectsZeus = raycaster.intersectObject(zeus.group, true)
-    // const intersectsPot = raycaster.intersectObject(pot.group, true)
-    // const intersectsWoman = raycaster.intersectObject(woman.group, true)
-    // const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
-
-    const intersect = raycaster.intersectObjects([zeus.group, pot.group, woman.group, hermaphro.group], true)
-
-
+    const intersectsZeus = raycaster.intersectObject(zeus.group, true)
+    const intersectsPot = raycaster.intersectObject(pot.group, true)
+    const intersectsWoman = raycaster.intersectObject(woman.group, true)
+    const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
     const descriptionBlock = document.querySelector('.descriptionBlock')
 
-
-
-    if( intersect.length > 0 ){
-    // console.log(zeus.group)
-        switch (intersect[0].object.name){
-        case 'zeusObject':
+    if(intersectsZeus.length || intersectsWoman.length || intersectsPot.length || intersectsHermaphro.length ){
+        if(intersectsZeus.length)
+        {
             descriptionBlock.innerHTML = `C’est une statue de Zeus réalisée dans le sanctuaire d'Olympie par le sculpteur athénien Phidias, vers 436 av. J.-C.`
-            break
+        }
         
-        case 'potObject':
+        if(intersectsPot.length)
+        {
             descriptionBlock.innerHTML = `Ce vase aurait été offert par Athéna au peuple des Pléiades en 637 av. J.C`
-            break
+        }
 
-        case 'womanObject':
+        if(intersectsWoman.length)
+        {
             descriptionBlock.innerHTML = `Ce vase fût pendant longtemps un symbole de fertilité pour quelconque peuple le possédant.`
-            break
-            
-        case 'hermaphroObject':
+        }
+
+        if(intersectsHermaphro.length)
+        {
             descriptionBlock.innerHTML =`L'Hermaphrodite Borghèse est une statue antique représentant Hermaphrodite endormi sur un matelas. Cette œuvre romaine est plus ou moins une copie d'après un original grec du IIème siècle av. J.-C.`
-            break
-        
-            default:
-            break
-
+        }
+        hoverArt = true
     }
-    hoverArt = true
-    // console.log(intersect)
-}
-
-    else{
+    else
+    {
         hoverArt = false
     }
-    
     if (hoverArt == true) 
     {
         descriptionBlock.classList.remove('invisible')
@@ -377,44 +366,11 @@ const loop = () =>
         descriptionBlock.classList.add('invisible')
     }
     
-    
     particles.updateParticles()
+    
 
     // Render
     renderer.render(scene, camera)
-
-    if (camera.position.y < 0)
-    {
-        camera.position.y = 0
-    }
-
-    if (camera.position.y > 20)
-    {
-        camera.position.y = 20
-    }
-
-
-    if(camera.position.x > 40)
-    {
-        camera.position.x = 40
-    }
-
-    if(camera.position.x < -40)
-    {
-        camera.position.x = -40
-    }
-
-    if(camera.position.z > 30)
-    {
-        camera.position.z = 30
-    }
-
-    if(camera.position.z < -35)
-    {
-        camera.position.z = -35
-    }
-
 }
 
 loop()
-console.log(zeus.group, pot.group, hermaphro.group, woman.group)

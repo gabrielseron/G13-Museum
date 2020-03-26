@@ -7,13 +7,13 @@ export default class Zeus
     constructor()
     {
         this.group = new THREE.Group()
-        this.group.name = "zeusObject"
 
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
 
         const gltfLoader = new GLTFLoader()
         gltfLoader.setDRACOLoader(dracoLoader)
+
         gltfLoader.load(
             '/models/artPoints/Zeus.glb',
             (_gltf) =>

@@ -7,7 +7,6 @@ export default class Woman
     constructor()
     {
         this.group = new THREE.Group()
-        this.group.name = "womanObject"
 
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
