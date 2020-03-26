@@ -310,9 +310,9 @@ window.addEventListener('resize', () =>
 /**
  * Loop
  */
-let hoverArt = false
 
-let activeArt = 0
+ // Hover Art 
+let hoverArt = false
 
 const loop = () =>
 {
