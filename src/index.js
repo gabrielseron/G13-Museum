@@ -13,6 +13,7 @@ import sandColorSource from '../static/models/sand/sand_color.jpg'
 import sandNormalSource from '../static/models/sand/sand_normal.jpg'
 import imageSource from './images/howtoplay.png'
 import soundSource from './audios/ambianceOfTheSea.mp3'
+const $controlsTextContainer = document.querySelector('.controlsTextContainer')
 
 
 const audioPlaceHolder = document.querySelector('.audioPlaceHolder')
@@ -54,7 +55,7 @@ const startButton = document.querySelector('.startButton')
 const startDiv = document.querySelector('.container')
 const rendererPlaceHolder = document.querySelector('.rendererPlaceHolder')
 startButton.addEventListener('click',  () => 
-{
+{   $controlsTextContainer.classList.remove('invisible')
     $positionedContainer.classList.add('invisible')
     rendererPlaceHolder.classList.remove('invisible')
     $audio.play()
