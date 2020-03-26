@@ -24,6 +24,7 @@ export default class Hermaphro
                 this.hermaphro.position.y = -2
                 this.hermaphro.position.z = -10
                 this.hermaphro.position.x = 30
+                this.hermaphro.name = "hermaphroObject"
             }
         )
     }

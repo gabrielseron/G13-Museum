@@ -26,6 +26,7 @@ export default class Zeus
                 this.zeus.position.x = -70
                 this.zeus.rotation.y = Math.PI/2
                 this.zeus.rotation.x = Math.PI/6
+                this.zeus.name = "zeusObject"
 
             }
         )

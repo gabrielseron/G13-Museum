@@ -152,6 +152,7 @@ const raycaster = new THREE.Raycaster()
 const pot = new Pot()
 scene.add(pot.group)
 
+
 //Zeus
 const zeus = new Zeus()
 scene.add(zeus.group)
@@ -325,38 +326,50 @@ const loop = () =>
     const raycasterCursor = new THREE.Vector2(cursor.x * 2, - cursor.y * 2)
     raycaster.setFromCamera(raycasterCursor, camera)
 
-    const intersectsZeus = raycaster.intersectObject(zeus.group, true)
-    const intersectsPot = raycaster.intersectObject(pot.group, true)
-    const intersectsWoman = raycaster.intersectObject(woman.group, true)
-    const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
+    // const intersectsZeus = raycaster.intersectObject(zeus.group, true)
+    // const intersectsPot = raycaster.intersectObject(pot.group, true)
+    // const intersectsWoman = raycaster.intersectObject(woman.group, true)
+    // const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
+
+    const intersect = raycaster.intersectObjects([zeus.group, pot.group, woman.group, hermaphro.group], true)
+
+
     const descriptionBlock = document.querySelector('.descriptionBlock')
 
-    if(intersectsZeus.length || intersectsWoman.length || intersectsPot.length || intersectsHermaphro.length ){
-        if(intersectsZeus.length)
-        {
+
+
+    if( intersect.length > 0 ){
+
+        switch (intersect[0].name){
+
+        case 'zeusObject':
             descriptionBlock.innerHTML = `C’est une statue de Zeus réalisée dans le sanctuaire d'Olympie par le sculpteur athénien Phidias, vers 436 av. J.-C.`
-        }
+            hoverArt = true
+            break
         
-        if(intersectsPot.length)
-        {
+        case 'potObject':
             descriptionBlock.innerHTML = `Ce vase aurait été offert par Athéna au peuple des Pléiades en 637 av. J.C`
-        }
+            hoverArt = true
+            break
 
-        if(intersectsWoman.length)
-        {
+        case 'womanObject':
             descriptionBlock.innerHTML = `Ce vase fût pendant longtemps un symbole de fertilité pour quelconque peuple le possédant.`
-        }
-
-        if(intersectsHermaphro.length)
-        {
+            hoverArt = true
+            break
+            
+        case 'hermaphro':
             descriptionBlock.innerHTML =`L'Hermaphrodite Borghèse est une statue antique représentant Hermaphrodite endormi sur un matelas. Cette œuvre romaine est plus ou moins une copie d'après un original grec du IIème siècle av. J.-C.`
-        }
+            hoverArt = true
+        default:
+            
+
         hoverArt = true
     }
-    else
-    {
+}
+    else{
         hoverArt = false
     }
+    
     if (hoverArt == true) 
     {
         descriptionBlock.classList.remove('invisible')
@@ -366,8 +379,8 @@ const loop = () =>
         descriptionBlock.classList.add('invisible')
     }
     
-    particles.updateParticles()
     
+    particles.updateParticles()
 
     // Render
     renderer.render(scene, camera)
