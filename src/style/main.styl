@@ -37,8 +37,15 @@ canvas
 .text
     font-family 'Lato', sans-serif
     color white     
-    font-weight lighter
     user-select none
+
+h1.firstElements.text
+    font-weight: normal
+
+h1.secondElements
+    letter-spacing: 5px
+    font-weight: bold
+    font-size: 40px
 
 .progressBar
     width 60%
@@ -54,15 +61,18 @@ canvas
 .startButton
     cursor pointer
     padding: 15px
-    width: 15%
+    width: 23%
     margin-top 3%
     border 1px solid 
     border-color: white
     text-align center
+    letter-spacing: 3px
+
 
 .startButton:hover
     color #020524
     background-color white
+    transition: 0.3s ease-in-out
 
 
 .invisible
