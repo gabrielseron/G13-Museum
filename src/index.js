@@ -313,7 +313,6 @@ window.addEventListener('resize', () =>
  */
 let hoverArt = false
 
-let activeArt = 0
 
 const loop = () =>
 {
@@ -331,7 +330,7 @@ const loop = () =>
     // const intersectsWoman = raycaster.intersectObject(woman.group, true)
     // const intersectsHermaphro = raycaster.intersectObject(hermaphro.group, true)
 
-    const intersect = raycaster.intersectObjects([zeus.group, pot.group, woman.group, hermaphro.group], true)
+    const intersect = raycaster.intersectObjects([zeus.zeus, pot.pot, woman.woman, hermaphro.hermaphro], true)
 
 
     const descriptionBlock = document.querySelector('.descriptionBlock')
@@ -339,33 +338,32 @@ const loop = () =>
 
 
     if( intersect.length > 0 ){
-
-        switch (intersect[0].name){
-
+    console.log(zeus.group)
+        switch (intersect[0].object.name){
         case 'zeusObject':
             descriptionBlock.innerHTML = `C’est une statue de Zeus réalisée dans le sanctuaire d'Olympie par le sculpteur athénien Phidias, vers 436 av. J.-C.`
-            hoverArt = true
             break
         
         case 'potObject':
             descriptionBlock.innerHTML = `Ce vase aurait été offert par Athéna au peuple des Pléiades en 637 av. J.C`
-            hoverArt = true
             break
 
         case 'womanObject':
             descriptionBlock.innerHTML = `Ce vase fût pendant longtemps un symbole de fertilité pour quelconque peuple le possédant.`
-            hoverArt = true
             break
             
-        case 'hermaphro':
+        case 'hermaphroObject':
             descriptionBlock.innerHTML =`L'Hermaphrodite Borghèse est une statue antique représentant Hermaphrodite endormi sur un matelas. Cette œuvre romaine est plus ou moins une copie d'après un original grec du IIème siècle av. J.-C.`
-            hoverArt = true
-        default:
-            
+            break
+        
+            default:
+            break
 
-        hoverArt = true
     }
+    hoverArt = true
+    // console.log(intersect)
 }
+
     else{
         hoverArt = false
     }
@@ -384,6 +382,39 @@ const loop = () =>
 
     // Render
     renderer.render(scene, camera)
+
+    if (camera.position.y < 0)
+    {
+        camera.position.y = 0
+    }
+
+    if (camera.position.y > 20)
+    {
+        camera.position.y = 20
+    }
+
+
+    if(camera.position.x > 40)
+    {
+        camera.position.x = 40
+    }
+
+    if(camera.position.x < -40)
+    {
+        camera.position.x = -40
+    }
+
+    if(camera.position.z > 30)
+    {
+        camera.position.z = 30
+    }
+
+    if(camera.position.z < -35)
+    {
+        camera.position.z = -35
+    }
+
 }
 
 loop()
+console.log(zeus.group, pot.group, hermaphro.group, woman.group)

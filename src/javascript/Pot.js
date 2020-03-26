@@ -7,6 +7,7 @@ export default class Pot
     constructor()
     {
         this.group = new THREE.Group()
+        this.group.name = "potObject"
 
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
@@ -28,8 +29,6 @@ export default class Pot
                 this.pot.rotation.y = Math.PI/8
                 this.pot.emissive = 0xffffff
                 this.pot.emissiveIntesivity = 4
-                this.pot.name = "potObject"
-
             }
         )
     }

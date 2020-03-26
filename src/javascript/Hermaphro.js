@@ -7,6 +7,7 @@ export default class Hermaphro
     constructor()
     {
         this.group = new THREE.Group()
+        this.group.name = "hermaphroObject"
 
         const dracoLoader = new DRACOLoader()
         dracoLoader.setDecoderPath('/draco/')
@@ -24,7 +25,6 @@ export default class Hermaphro
                 this.hermaphro.position.y = -2
                 this.hermaphro.position.z = -10
                 this.hermaphro.position.x = 30
-                this.hermaphro.name = "hermaphroObject"
             }
         )
     }
