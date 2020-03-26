@@ -13,7 +13,14 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 import sandColorSource from '../static/models/sand/sand_color.jpg'
 import sandNormalSource from '../static/models/sand/sand_normal.jpg'
 import imageSource from './images/howtoplay.png'
-import seaSound from '../static/audios/ambianceOfTheSea.mp3'
+import soundSource from './audios/ambianceOfTheSea.mp3'
+
+
+const audioPlaceHolder = document.querySelector('.audioPlaceHolder')
+
+const $audio = new Audio()
+$audio.src = soundSource
+audioPlaceHolder.appendChild($audio)
 
 
 
@@ -51,7 +58,7 @@ startButton.addEventListener('click',  () =>
 {
     $positionedContainer.classList.add('invisible')
     rendererPlaceHolder.classList.remove('invisible')
-    seaSound.play()
+    $audio.play()
 })
 
 
