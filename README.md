@@ -1,17 +1,15 @@
-# Webpack Template
+# Aquantica
+##### Interactive experience of an underwater museum
 
-## Features
 
-- Basic files support (HTML, CSS, Stylus, JS, Images, Fonts)
-- Extracted CSS
-- Transpilled JS (with Babel)
-- Sourcemaps
-- Clean dist
-- Dev server (with local network support)
-- Static Files
-- Cache breaker
+## Controls
+- Left click : move forward
+- Right click : move backward
+- Move mouse : camera controls
+- Hover an element : display information
 
-## Instructions
+
+## Dev Instructions
 
 Install dependencies
 
